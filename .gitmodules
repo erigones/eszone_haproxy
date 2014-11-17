@@ -1,0 +1,3 @@
+[submodule "api_haproxy"]
+	path = api_haproxy
+	url = git@github.com:erigones/api_haproxy.git

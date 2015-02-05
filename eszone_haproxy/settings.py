@@ -8,57 +8,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# DEVELOPMENT (DEFAULT) SETTINGS
+# Secret key for development use only !
 SECRET_KEY = '&sl6qtiuk_7&ef9iwkx1r031cj-(!dx15x9+5ivuke=n6jqdaq'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Enable debug for development
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
+# Left this empty with DEBUG set to True
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'api_core',
-    'api_haproxy',
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-ROOT_URLCONF = 'eszone_haproxy.urls'
-
-WSGI_APPLICATION = 'eszone_haproxy.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+# Databases configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -66,24 +29,49 @@ DATABASES = {
     }
 }
 
+
+# PRODUCTION SETTINGS
+# You should run this application with ENV=production set in your production environment
+if os.environ.get('ENV') == 'production':
+    # Provide your secure secret key
+    SECRET_KEY = 'write your secret code here'
+
+    # Running with DEBUG enabled in production is insecure
+    DEBUG = False
+
+    # Add hosts, which will connect to this API
+    ALLOWED_HOSTS = [
+        '127.0.0.1',
+    ]
+
+
+# GENERAL SETTINGS
+# Definition of used applications
+INSTALLED_APPS = (
+    'rest_framework',
+    'api_core',
+    'api_haproxy',
+)
+
+# Definition of used middleware
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+)
+
+# Path within application to main file with url setup
+ROOT_URLCONF = 'eszone_haproxy.urls'
+
+# Path to file containing wsgi configuration ready for deployment
+WSGI_APPLICATION = 'eszone_haproxy.wsgi.application'
+
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
+USE_I18N = False
 USE_L10N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-
-# API specific configuration
-API_VERSION = 'v1'
+# APPLICATION SETTINGS
+# API Version, used also within urls
+API_VERSION_PREFIX = 'v1'

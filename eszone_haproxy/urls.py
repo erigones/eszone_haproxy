@@ -1,10 +1,6 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.conf.urls import include, url
+from settings import API_VERSION
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'eszone_haproxy.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = [
+    url(r'^{0}/'.format(API_VERSION), include('api_core.urls')),
+]

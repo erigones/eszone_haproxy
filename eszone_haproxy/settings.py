@@ -85,5 +85,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< Updated upstream
 # API specific configuration
 API_VERSION = 'v1'
+=======
+# rest framework configuration
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
+# API specific configuration
+API_VERSION = 'v1'
+>>>>>>> Stashed changes

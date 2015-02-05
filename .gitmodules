@@ -4,6 +4,3 @@
 [submodule "api_core"]
 	path = api_core
 	url = git@github.com:erigones/api_core.git
-[submodule "api_squid"]
-	path = api_squid
-	url = https://github.com/erigones/api_squid.git

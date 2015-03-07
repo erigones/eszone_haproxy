@@ -58,6 +58,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
 )
 
+# Rest framework configuration
+REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
+
 # Path within application to main file with url setup
 ROOT_URLCONF = 'eszone_haproxy.urls'
 

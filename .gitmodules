@@ -1,6 +1,6 @@
 [submodule "api_haproxy"]
 	path = api_haproxy
-	url = git@github.com:erigones/api_haproxy.git
+	url = https://github.com/erigones/api_haproxy.git
 [submodule "api_core"]
 	path = api_core
-	url = git@github.com:erigones/api_core.git
+	url = https://github.com/erigones/api_core.git

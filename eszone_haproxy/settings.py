@@ -60,7 +60,10 @@ MIDDLEWARE_CLASSES = (
 
 # Rest framework configuration
 REST_FRAMEWORK = {
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }
 
 # Path within application to main file with url setup
